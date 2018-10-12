@@ -37,9 +37,10 @@ def getRedPixVal(pt1,pt2):
     # Get the image of the desired section
     image = ImageGrab.grab(box)
     # List the red band values of the image (1-d vector) 
-    l = list(image.getdata(0))
+    l = list(image.getdata(2))
     # Return the average red band value
-    return sum(l)/len(l) 
+    #return sum(l)/len(l) 
+    return l.count(0)
 
 
 
@@ -59,28 +60,39 @@ def main():
     time.sleep(3)
     # Set the reference red pixel value
     refPixVal = getRedPixVal(pt1,pt2)
+    while refPixVal==0:
+    # Make sure capture the Fishing Float
+        print('Fish on reel!')
+        # Right-click to reel-in fish
+        pyautogui.click(button='right')
+        # Wait for fishing bob to resume its position
+        time.sleep(0.5)
+        # Right click again to start fishing once again
+        print('Resetting...')
+        pyautogui.click(button='right')
+        # Wait for fishing bob to resume its position
+        time.sleep(2)
+        refPixVal = getRedPixVal(pt1,pt2)
     print('Ref Pix Val: {}'.format(refPixVal))
     # Main fishing loop
     while True:
         currentRedVal = getRedPixVal(pt1,pt2)
-        print('Fishing... PixValue: {}'.format(round(currentRedVal/refPixVal,2)))
+        print('Fishing... PixValue: {}'.format(round(currentRedVal/refPixVal,2)),end='\r')
         if currentRedVal < refPixVal * 0.7: 
             # If the bob goes below the water
             print('Fish on reel!')
             # Right-click to reel-in fish
             pyautogui.click(button='right')
             # Wait for fishing bob to resume its position
-            time.sleep(3)
+            time.sleep(0.5)
             # Right click again to start fishing once again
             print('Resetting...')
             pyautogui.click(button='right')
             # Wait for fishing bob to resume its position
-            time.sleep(3) 
+            time.sleep(2) 
 
-        time.sleep(0.35)
+        time.sleep(0.1)
 
 
 if __name__ == '__main__':
     main()
-
-

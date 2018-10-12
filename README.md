@@ -1,5 +1,5 @@
 
-# Minecraft Fisher
+# Minecraft Fisher for Bedrock Edtion
 
 A script that automates fishing in Minecraft for use on single-player worlds. 
 
@@ -30,12 +30,4 @@ The code will ask you to set a window for the bobber and then proceed to start a
 
 ## How it works:
 
-Every 1/3 of a second, the program will take a screenshot of the identified window on screen and determine the amount of "red" in the picture from the fishing bobber. If the average R-band value in the picture dips below a certain threshold, then the bobber most likely dove underwater, indicating a fish is on the line! It then right-clicks to reel in the fish and then starts the whole cycle over.
-
-
-
-
-
-
-
-
+Every 1/10 of a second, the program will take a screenshot of the identified window on screen and determine the amount of "black" in the picture from the fishing bobber. If the average black value in the picture dips below a certain threshold, then the bobber most likely dove underwater, indicating a fish is on the line! It then right-clicks to reel in the fish and then starts the whole cycle over.
