@@ -8,6 +8,7 @@ A script that automates fishing in Minecraft for use on single-player worlds.
 ## Requirements and installation:
 
 This code has been tested with Python 3.6, but *should* work with Python 3+.
+It works well with Minecraft Bedrock Edtion 1.6.1.
 
 Required packages:
 - Pillow
